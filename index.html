@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Codificación de caracteres: permite usar tildes y ñ -->
+  <meta charset="UTF-8">
+  <!-- Hace que el sitio se adapte al ancho de celulares -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plataforma para que los vecinos reporten problemas urbanos de su barrio.">
+  <title>ReportaYa - Reportes urbanos</title>
+</head>
+<body>
+
+  <!-- ===== ENCABEZADO: nombre del sitio y menú de navegación ===== -->
+  <header>
+    <h1>ReportaYa</h1>
+    <p>Tu barrio, mejor entre todos</p>
+
+    <nav>
+      <ul>
+        <!-- Cada enlace lleva a una sección usando su id (#id) -->
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#como-funciona">Cómo funciona</a></li>
+        <li><a href="#nuevo-reporte">Nuevo reporte</a></li>
+        <li><a href="#reportes">Reportes</a></li>
+        <li><a href="#estadisticas">Estadísticas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== CONTENIDO PRINCIPAL ===== -->
+  <main>
+
+    <!-- Sección 1: presentación del sitio -->
+    <section id="inicio">
+      <h2>Reportá los problemas de tu barrio</h2>
+      <p>
+        Baches, luminarias rotas, basurales, pérdidas de agua...
+        Avisale al municipio en pocos minutos y seguí el estado de tu reporte.
+      </p>
+      <a href="#nuevo-reporte">Crear un reporte</a>
+    </section>
+
+    <!-- Sección 2: explicación del funcionamiento en 3 pasos -->
+    <section id="como-funciona">
+      <h2>¿Cómo funciona?</h2>
+      <ol>
+        <li>
+          <h3>Reportá</h3>
+          <p>Completá el formulario con la categoría, la dirección y una foto del problema.</p>
+        </li>
+        <li>
+          <h3>El municipio lo revisa</h3>
+          <p>Tu reporte llega al área correspondiente y cambia a estado "En proceso".</p>
+        </li>
+        <li>
+          <h3>Seguí el estado</h3>
+          <p>Consultá en todo momento si tu reporte está pendiente, en proceso o resuelto.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Sección 3: formulario para crear un reporte -->
+    <section id="nuevo-reporte">
+      <h2>Nuevo reporte</h2>
+
+      <form>
+        <!-- El atributo "for" del label se vincula con el "id" del campo -->
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo" placeholder="Ej: Bache grande en la esquina" required>
+
+        <label for="categoria">Categoría</label>
+        <select id="categoria" name="categoria" required>
+          <option value="">Seleccioná una categoría</option>
+          <option value="bache">Bache</option>
+          <option value="luminaria">Luminaria rota</option>
+          <option value="basural">Basural</option>
+          <option value="agua">Pérdida de agua</option>
+          <option value="otro">Otro</option>
+        </select>
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" rows="4" placeholder="Contanos qué pasa" required></textarea>
+
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" name="direccion" placeholder="Calle y número" required>
+
+        <label for="barrio">Barrio</label>
+        <select id="barrio" name="barrio" required>
+          <option value="">Seleccioná un barrio</option>
+          <option value="centro">Centro</option>
+          <option value="barrio-norte">Barrio Norte</option>
+          <option value="barrio-sur">Barrio Sur</option>
+          <option value="villa-lujan">Villa Luján</option>
+        </select>
+
+        <label for="foto">Foto (opcional)</label>
+        <!-- accept="image/*" limita la selección a archivos de imagen -->
+        <input type="file" id="foto" name="foto" accept="image/*">
+
+        <button type="submit">Enviar reporte</button>
+      </form>
+    </section>
+
+    <!-- Sección 4: listado de reportes con filtros -->
+    <section id="reportes">
+      <h2>Reportes de la comunidad</h2>
+
+      <!-- Filtros (más adelante funcionarán con JavaScript/React) -->
+      <form>
+        <label for="filtro-categoria">Categoría</label>
+        <select id="filtro-categoria" name="filtro-categoria">
+          <option value="">Todas</option>
+          <option value="bache">Bache</option>
+          <option value="luminaria">Luminaria rota</option>
+          <option value="basural">Basural</option>
+          <option value="agua">Pérdida de agua</option>
+        </select>
+
+        <label for="filtro-estado">Estado</label>
+        <select id="filtro-estado" name="filtro-estado">
+          <option value="">Todos</option>
+          <option value="pendiente">Pendiente</option>
+          <option value="en-proceso">En proceso</option>
+          <option value="resuelto">Resuelto</option>
+        </select>
+      </form>
+
+      <!-- Cada reporte es un <article>: contenido independiente -->
+      <article>
+        <h3>Bache grande en la esquina</h3>
+        <p><strong>Categoría:</strong> Bache</p>
+        <p><strong>Barrio:</strong> Centro</p>
+        <p><strong>Estado:</strong> Pendiente</p>
+        <p><strong>Fecha:</strong> <time datetime="2026-10-20">20/10/2026</time></p>
+      </article>
+
+      <article>
+        <h3>Luminaria apagada hace una semana</h3>
+        <p><strong>Categoría:</strong> Luminaria rota</p>
+        <p><strong>Barrio:</strong> Barrio Norte</p>
+        <p><strong>Estado:</strong> En proceso</p>
+        <p><strong>Fecha:</strong> <time datetime="2026-10-15">15/10/2026</time></p>
+      </article>
+
+      <article>
+        <h3>Basural en el terreno baldío</h3>
+        <p><strong>Categoría:</strong> Basural</p>
+        <p><strong>Barrio:</strong> Barrio Sur</p>
+        <p><strong>Estado:</strong> Resuelto</p>
+        <p><strong>Fecha:</strong> <time datetime="2026-10-02">02/10/2026</time></p>
+      </article>
+    </section>
+
+    <!-- Sección 5: resumen de estadísticas -->
+    <section id="estadisticas">
+      <h2>Estadísticas</h2>
+
+      <table>
+        <caption>Reportes por estado</caption>
+        <thead>
+          <tr>
+            <th>Estado</th>
+            <th>Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Pendiente</td><td>1</td></tr>
+          <tr><td>En proceso</td><td>1</td></tr>
+          <tr><td>Resuelto</td><td>1</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><th>Total</th><td>3</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+  </main>
+
+  <!-- ===== PIE DE PÁGINA ===== -->
+  <footer>
+    <p>ReportaYa - Proyecto de Programación IV</p>
+    <p>Desarrollado por Lourdes - 2026</p>
+  </footer>
+
+</body>
+</html>
