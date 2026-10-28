@@ -1,185 +1,292 @@
 <!DOCTYPE html>
+<!-- SEO 1: idioma de la página, ayuda a los buscadores a mostrarla a quien busca en español -->
 <html lang="es">
 <head>
-  <!-- Codificación de caracteres: permite usar tildes y ñ -->
   <meta charset="UTF-8">
-  <!-- Hace que el sitio se adapte al ancho de celulares -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Plataforma para que los vecinos reporten problemas urbanos de su barrio.">
-  <title>ReportaYa - Reportes urbanos</title>
+
+  <!-- SEO 2: título único y descriptivo (es lo que aparece en Google y en la pestaña) -->
+  <title>ReportaYa | Reportá baches, luminarias y basurales de tu barrio</title>
+
+  <!-- SEO 3: meta description, el texto que se muestra debajo del título en Google -->
+  <meta name="description" content="ReportaYa es una plataforma para que los vecinos reporten problemas urbanos como baches, luminarias rotas y basurales, y sigan el estado de cada reporte.">
+  <meta name="keywords" content="reportes urbanos, baches, luminarias, basurales, reclamos municipales, barrio">
+  <meta name="author" content="Lourdes">
+
+  <!-- SEO 4: indica a los buscadores que pueden indexar la página y seguir sus enlaces -->
+  <meta name="robots" content="index, follow">
+
+  <!-- SEO 5: URL canónica, evita contenido duplicado (reemplazar por la URL real del sitio) -->
+  <link rel="canonical" href="https://TU-USUARIO.github.io/reportes-urbanos/">
+
+  <!-- SEO 6: Open Graph, controla cómo se ve el enlace al compartirlo en WhatsApp o Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ReportaYa | Reportes urbanos">
+  <meta property="og:description" content="Reportá los problemas de tu barrio y seguí su estado.">
+  <meta property="og:image" content="img/hero.svg">
+  <meta property="og:url" content="https://TU-USUARIO.github.io/reportes-urbanos/">
+  <meta property="og:locale" content="es_AR">
+
+  <!-- Ícono de la pestaña del navegador -->
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+
+  <!-- Tipografías de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Hoja de estilos externa -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- ===== ENCABEZADO: nombre del sitio y menú de navegación ===== -->
-  <header>
-    <h1>ReportaYa</h1>
-    <p>Tu barrio, mejor entre todos</p>
+  <!-- ===== ENCABEZADO ===== -->
+  <header class="encabezado">
+    <div class="contenedor encabezado__contenido">
+      <a href="#inicio" class="marca">
+        <!-- SEO 7: todas las imágenes tienen texto alternativo (alt) -->
+        <img src="img/logo.svg" alt="Logo de ReportaYa" width="40" height="40">
+        <span class="marca__texto">
+          <span class="marca__nombre">ReportaYa</span>
+          <span class="marca__lema">Tu barrio, mejor entre todos</span>
+        </span>
+      </a>
 
-    <nav>
-      <ul>
-        <!-- Cada enlace lleva a una sección usando su id (#id) -->
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#como-funciona">Cómo funciona</a></li>
-        <li><a href="#nuevo-reporte">Nuevo reporte</a></li>
-        <li><a href="#reportes">Reportes</a></li>
-        <li><a href="#estadisticas">Estadísticas</a></li>
-      </ul>
-    </nav>
+      <nav class="menu" aria-label="Navegación principal">
+        <ul class="menu__lista">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#nuevo-reporte">Nuevo reporte</a></li>
+          <li><a href="#reportes">Reportes</a></li>
+          <li><a href="#estadisticas">Estadísticas</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- ===== CONTENIDO PRINCIPAL ===== -->
   <main>
 
-    <!-- Sección 1: presentación del sitio -->
-    <section id="inicio">
-      <h2>Reportá los problemas de tu barrio</h2>
-      <p>
-        Baches, luminarias rotas, basurales, pérdidas de agua...
-        Avisale al municipio en pocos minutos y seguí el estado de tu reporte.
-      </p>
-      <a href="#nuevo-reporte">Crear un reporte</a>
+    <!-- ===== SECCIÓN 1: INICIO (Flexbox) ===== -->
+    <section id="inicio" class="inicio">
+      <div class="contenedor inicio__contenido">
+        <div class="inicio__texto">
+          <!-- SEO 8: un solo h1 por página con la palabra clave principal -->
+          <h1>Reportá los problemas urbanos de tu barrio</h1>
+          <p>
+            Baches, luminarias rotas, basurales, pérdidas de agua...
+            Avisale al municipio en pocos minutos y seguí el estado de tu reporte.
+          </p>
+          <div class="inicio__botones">
+            <a href="#nuevo-reporte" class="boton boton--primario">Crear un reporte</a>
+            <a href="#reportes" class="boton boton--secundario">Ver reportes</a>
+          </div>
+        </div>
+        <img class="inicio__imagen" src="img/hero.svg"
+             alt="Ilustración de una calle de barrio con un bache señalizado y una luminaria apagada"
+             width="480" height="360">
+      </div>
     </section>
 
-    <!-- Sección 2: explicación del funcionamiento en 3 pasos -->
-    <section id="como-funciona">
-      <h2>¿Cómo funciona?</h2>
-      <ol>
-        <li>
-          <h3>Reportá</h3>
-          <p>Completá el formulario con la categoría, la dirección y una foto del problema.</p>
-        </li>
-        <li>
-          <h3>El municipio lo revisa</h3>
-          <p>Tu reporte llega al área correspondiente y cambia a estado "En proceso".</p>
-        </li>
-        <li>
-          <h3>Seguí el estado</h3>
-          <p>Consultá en todo momento si tu reporte está pendiente, en proceso o resuelto.</p>
-        </li>
-      </ol>
+    <!-- ===== SECCIÓN 2: CÓMO FUNCIONA (Grid) ===== -->
+    <section id="como-funciona" class="seccion">
+      <div class="contenedor">
+        <h2 class="seccion__titulo">¿Cómo funciona?</h2>
+        <ol class="pasos">
+          <li class="paso">
+            <span class="paso__numero">1</span>
+            <h3>Reportá</h3>
+            <p>Completá el formulario con la categoría, la dirección y una foto del problema.</p>
+          </li>
+          <li class="paso">
+            <span class="paso__numero">2</span>
+            <h3>El municipio lo revisa</h3>
+            <p>Tu reporte llega al área correspondiente y cambia a estado "En proceso".</p>
+          </li>
+          <li class="paso">
+            <span class="paso__numero">3</span>
+            <h3>Seguí el estado</h3>
+            <p>Consultá en todo momento si tu reporte está pendiente, en proceso o resuelto.</p>
+          </li>
+        </ol>
+      </div>
     </section>
 
-    <!-- Sección 3: formulario para crear un reporte -->
-    <section id="nuevo-reporte">
-      <h2>Nuevo reporte</h2>
+    <!-- ===== SECCIÓN 3: NUEVO REPORTE (formulario con Grid) ===== -->
+    <section id="nuevo-reporte" class="seccion seccion--clara">
+      <div class="contenedor">
+        <h2 class="seccion__titulo">Nuevo reporte</h2>
 
-      <form>
-        <!-- El atributo "for" del label se vincula con el "id" del campo -->
-        <label for="titulo">Título</label>
-        <input type="text" id="titulo" name="titulo" placeholder="Ej: Bache grande en la esquina" required>
+        <form class="formulario">
+          <div class="campo campo--completo">
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" name="titulo" placeholder="Ej: Bache grande en la esquina" required>
+          </div>
 
-        <label for="categoria">Categoría</label>
-        <select id="categoria" name="categoria" required>
-          <option value="">Seleccioná una categoría</option>
-          <option value="bache">Bache</option>
-          <option value="luminaria">Luminaria rota</option>
-          <option value="basural">Basural</option>
-          <option value="agua">Pérdida de agua</option>
-          <option value="otro">Otro</option>
-        </select>
+          <div class="campo">
+            <label for="categoria">Categoría</label>
+            <select id="categoria" name="categoria" required>
+              <option value="">Seleccioná una categoría</option>
+              <option value="bache">Bache</option>
+              <option value="luminaria">Luminaria rota</option>
+              <option value="basural">Basural</option>
+              <option value="agua">Pérdida de agua</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
 
-        <label for="descripcion">Descripción</label>
-        <textarea id="descripcion" name="descripcion" rows="4" placeholder="Contanos qué pasa" required></textarea>
+          <div class="campo">
+            <label for="barrio">Barrio</label>
+            <select id="barrio" name="barrio" required>
+              <option value="">Seleccioná un barrio</option>
+              <option value="centro">Centro</option>
+              <option value="barrio-norte">Barrio Norte</option>
+              <option value="barrio-sur">Barrio Sur</option>
+              <option value="villa-lujan">Villa Luján</option>
+            </select>
+          </div>
 
-        <label for="direccion">Dirección</label>
-        <input type="text" id="direccion" name="direccion" placeholder="Calle y número" required>
+          <div class="campo campo--completo">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion" rows="4" placeholder="Contanos qué pasa" required></textarea>
+          </div>
 
-        <label for="barrio">Barrio</label>
-        <select id="barrio" name="barrio" required>
-          <option value="">Seleccioná un barrio</option>
-          <option value="centro">Centro</option>
-          <option value="barrio-norte">Barrio Norte</option>
-          <option value="barrio-sur">Barrio Sur</option>
-          <option value="villa-lujan">Villa Luján</option>
-        </select>
+          <div class="campo">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion" placeholder="Calle y número" required>
+          </div>
 
-        <label for="foto">Foto (opcional)</label>
-        <!-- accept="image/*" limita la selección a archivos de imagen -->
-        <input type="file" id="foto" name="foto" accept="image/*">
+          <div class="campo">
+            <label for="foto">Foto (opcional)</label>
+            <input type="file" id="foto" name="foto" accept="image/*">
+          </div>
 
-        <button type="submit">Enviar reporte</button>
-      </form>
+          <button type="submit" class="boton boton--primario campo--completo">Enviar reporte</button>
+        </form>
+      </div>
     </section>
 
-    <!-- Sección 4: listado de reportes con filtros -->
-    <section id="reportes">
-      <h2>Reportes de la comunidad</h2>
+    <!-- ===== SECCIÓN 4: REPORTES (filtros con Flexbox + tarjetas con Grid) ===== -->
+    <section id="reportes" class="seccion">
+      <div class="contenedor">
+        <h2 class="seccion__titulo">Reportes de la comunidad</h2>
 
-      <!-- Filtros (más adelante funcionarán con JavaScript/React) -->
-      <form>
-        <label for="filtro-categoria">Categoría</label>
-        <select id="filtro-categoria" name="filtro-categoria">
-          <option value="">Todas</option>
-          <option value="bache">Bache</option>
-          <option value="luminaria">Luminaria rota</option>
-          <option value="basural">Basural</option>
-          <option value="agua">Pérdida de agua</option>
-        </select>
+        <form class="filtros" aria-label="Filtrar reportes">
+          <div class="campo">
+            <label for="filtro-categoria">Categoría</label>
+            <select id="filtro-categoria" name="filtro-categoria">
+              <option value="">Todas</option>
+              <option value="bache">Bache</option>
+              <option value="luminaria">Luminaria rota</option>
+              <option value="basural">Basural</option>
+              <option value="agua">Pérdida de agua</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="filtro-estado">Estado</label>
+            <select id="filtro-estado" name="filtro-estado">
+              <option value="">Todos</option>
+              <option value="pendiente">Pendiente</option>
+              <option value="en-proceso">En proceso</option>
+              <option value="resuelto">Resuelto</option>
+            </select>
+          </div>
+        </form>
 
-        <label for="filtro-estado">Estado</label>
-        <select id="filtro-estado" name="filtro-estado">
-          <option value="">Todos</option>
-          <option value="pendiente">Pendiente</option>
-          <option value="en-proceso">En proceso</option>
-          <option value="resuelto">Resuelto</option>
-        </select>
-      </form>
+        <div class="reportes">
+          <article class="tarjeta">
+            <div class="tarjeta__cabecera">
+              <span class="etiqueta">Bache</span>
+              <span class="estado estado--pendiente">Pendiente</span>
+            </div>
+            <h3>Bache grande en la esquina</h3>
+            <p>Bache profundo que ocupa medio carril, peligroso para motos y bicicletas.</p>
+            <footer class="tarjeta__pie">
+              <span>Centro</span>
+              <time datetime="2026-10-20">20/10/2026</time>
+            </footer>
+          </article>
 
-      <!-- Cada reporte es un <article>: contenido independiente -->
-      <article>
-        <h3>Bache grande en la esquina</h3>
-        <p><strong>Categoría:</strong> Bache</p>
-        <p><strong>Barrio:</strong> Centro</p>
-        <p><strong>Estado:</strong> Pendiente</p>
-        <p><strong>Fecha:</strong> <time datetime="2026-10-20">20/10/2026</time></p>
-      </article>
+          <article class="tarjeta">
+            <div class="tarjeta__cabecera">
+              <span class="etiqueta">Luminaria rota</span>
+              <span class="estado estado--proceso">En proceso</span>
+            </div>
+            <h3>Luminaria apagada hace una semana</h3>
+            <p>La cuadra queda completamente a oscuras durante la noche.</p>
+            <footer class="tarjeta__pie">
+              <span>Barrio Norte</span>
+              <time datetime="2026-10-15">15/10/2026</time>
+            </footer>
+          </article>
 
-      <article>
-        <h3>Luminaria apagada hace una semana</h3>
-        <p><strong>Categoría:</strong> Luminaria rota</p>
-        <p><strong>Barrio:</strong> Barrio Norte</p>
-        <p><strong>Estado:</strong> En proceso</p>
-        <p><strong>Fecha:</strong> <time datetime="2026-10-15">15/10/2026</time></p>
-      </article>
-
-      <article>
-        <h3>Basural en el terreno baldío</h3>
-        <p><strong>Categoría:</strong> Basural</p>
-        <p><strong>Barrio:</strong> Barrio Sur</p>
-        <p><strong>Estado:</strong> Resuelto</p>
-        <p><strong>Fecha:</strong> <time datetime="2026-10-02">02/10/2026</time></p>
-      </article>
+          <article class="tarjeta">
+            <div class="tarjeta__cabecera">
+              <span class="etiqueta">Basural</span>
+              <span class="estado estado--resuelto">Resuelto</span>
+            </div>
+            <h3>Basural en el terreno baldío</h3>
+            <p>Acumulación de residuos en el terreno de la esquina, con presencia de roedores.</p>
+            <footer class="tarjeta__pie">
+              <span>Barrio Sur</span>
+              <time datetime="2026-10-02">02/10/2026</time>
+            </footer>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Sección 5: resumen de estadísticas -->
-    <section id="estadisticas">
-      <h2>Estadísticas</h2>
+    <!-- ===== SECCIÓN 5: ESTADÍSTICAS (Grid) ===== -->
+    <section id="estadisticas" class="seccion seccion--clara">
+      <div class="contenedor">
+        <h2 class="seccion__titulo">Estadísticas</h2>
 
-      <table>
-        <caption>Reportes por estado</caption>
-        <thead>
-          <tr>
-            <th>Estado</th>
-            <th>Cantidad</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Pendiente</td><td>1</td></tr>
-          <tr><td>En proceso</td><td>1</td></tr>
-          <tr><td>Resuelto</td><td>1</td></tr>
-        </tbody>
-        <tfoot>
-          <tr><th>Total</th><td>3</td></tr>
-        </tfoot>
-      </table>
+        <div class="estadisticas">
+          <div class="dato">
+            <span class="dato__numero">3</span>
+            <span class="dato__texto">Reportes totales</span>
+          </div>
+          <div class="dato dato--pendiente">
+            <span class="dato__numero">1</span>
+            <span class="dato__texto">Pendientes</span>
+          </div>
+          <div class="dato dato--proceso">
+            <span class="dato__numero">1</span>
+            <span class="dato__texto">En proceso</span>
+          </div>
+          <div class="dato dato--resuelto">
+            <span class="dato__numero">1</span>
+            <span class="dato__texto">Resueltos</span>
+          </div>
+        </div>
+
+        <div class="tabla-contenedor">
+          <table class="tabla">
+            <caption>Reportes por categoría</caption>
+            <thead>
+              <tr><th scope="col">Categoría</th><th scope="col">Cantidad</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Bache</td><td>1</td></tr>
+              <tr><td>Luminaria rota</td><td>1</td></tr>
+              <tr><td>Basural</td><td>1</td></tr>
+              <tr><td>Pérdida de agua</td><td>0</td></tr>
+            </tbody>
+            <tfoot>
+              <tr><th scope="row">Total</th><td>3</td></tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
     </section>
 
   </main>
 
-  <!-- ===== PIE DE PÁGINA ===== -->
-  <footer>
-    <p>ReportaYa - Proyecto de Programación IV</p>
-    <p>Desarrollado por Lourdes - 2026</p>
+  <!-- ===== PIE DE PÁGINA (Flexbox) ===== -->
+  <footer class="pie">
+    <div class="contenedor pie__contenido">
+      <p><strong>ReportaYa</strong> - Proyecto de Programación IV</p>
+      <p>Desarrollado por Lourdes - 2026</p>
+    </div>
   </footer>
 
 </body>

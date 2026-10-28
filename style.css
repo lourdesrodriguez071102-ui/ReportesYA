@@ -1,0 +1,573 @@
+/* =========================================================
+   ReportaYa - Hoja de estilos
+   Enfoque "mobile first": primero se diseña para celular y
+   luego, con media queries, se adapta a tablet y computadora.
+   ========================================================= */
+
+
+/* ===== 1. VARIABLES CSS =====
+   Se definen una sola vez en :root y se usan con var(--nombre).
+   Si mañana cambia el color principal, se modifica en un solo lugar. */
+:root {
+  /* Colores */
+  --color-primario: #1e3a5f;      /* azul oscuro: encabezado, títulos */
+  --color-acento: #f97316;        /* naranja: botones y llamados a la acción */
+  --color-acento-oscuro: #ea580c;
+  --color-fondo: #ffffff;
+  --color-fondo-claro: #f1f5f9;   /* fondo gris claro de secciones alternadas */
+  --color-texto: #1e293b;
+  --color-texto-suave: #64748b;
+  --color-borde: #e2e8f0;
+
+  /* Colores de estado de los reportes */
+  --color-pendiente: #dc2626;
+  --color-proceso: #d97706;
+  --color-resuelto: #16a34a;
+
+  /* Tipografías */
+  --fuente-titulos: "Poppins", Arial, sans-serif;
+  --fuente-texto: "Inter", Arial, sans-serif;
+
+  /* Espaciados (en rem: relativos al tamaño de letra base, 16px) */
+  --espacio-xs: 0.5rem;   /* 8px  */
+  --espacio-sm: 1rem;     /* 16px */
+  --espacio-md: 1.5rem;   /* 24px */
+  --espacio-lg: 3rem;     /* 48px */
+
+  /* Bordes y sombras */
+  --radio: 12px;
+  --sombra: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --sombra-fuerte: 0 8px 24px rgba(15, 23, 42, 0.15);
+
+  --ancho-maximo: 1100px;
+}
+
+
+/* ===== 2. RESET Y BOX MODEL =====
+   box-sizing: border-box hace que el padding y el border queden
+   DENTRO del ancho del elemento. Así, width: 100% nunca se desborda. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;  /* desplazamiento suave al hacer clic en el menú */
+}
+
+body {
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+}
+
+img {
+  max-width: 100%;  /* las imágenes nunca superan el ancho de su contenedor */
+  height: auto;
+  display: block;
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+  line-height: 1.2;
+  color: var(--color-primario);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Contenedor reutilizable: centra el contenido y limita su ancho */
+.contenedor {
+  width: 90%;                     /* unidad %: 90% del ancho disponible */
+  max-width: var(--ancho-maximo); /* unidad px a través de la variable */
+  margin: 0 auto;                 /* margin auto a los costados = centrado */
+}
+
+
+/* ===== 3. ENCABEZADO Y MENÚ (Flexbox) ===== */
+.encabezado {
+  background-color: var(--color-primario);
+  color: #ffffff;
+  padding: var(--espacio-sm) 0;
+  position: sticky;   /* queda fijo arriba al hacer scroll */
+  top: 0;
+  z-index: 10;
+  box-shadow: var(--sombra);
+}
+
+.encabezado__contenido {
+  display: flex;                 /* FLEXBOX */
+  flex-direction: column;        /* en celular: logo arriba, menú abajo */
+  align-items: center;
+  gap: var(--espacio-sm);
+}
+
+.marca {
+  display: flex;                 /* FLEXBOX: logo y texto en fila */
+  align-items: center;
+  gap: var(--espacio-xs);
+}
+
+.marca__texto {
+  display: flex;
+  flex-direction: column;
+}
+
+.marca__nombre {
+  font-family: var(--fuente-titulos);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.marca__lema {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.menu__lista {
+  list-style: none;
+  display: flex;                 /* FLEXBOX: los enlaces en fila */
+  flex-wrap: wrap;               /* si no entran, pasan a la línea siguiente */
+  justify-content: center;
+  gap: var(--espacio-xs);
+}
+
+.menu__lista a {
+  display: block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.menu__lista a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+
+/* ===== 4. BOTONES ===== */
+.boton {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid transparent;
+  border-radius: var(--radio);
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.boton:hover {
+  transform: translateY(-2px);
+}
+
+.boton--primario {
+  background-color: var(--color-acento);
+  color: #ffffff;
+}
+
+.boton--primario:hover {
+  background-color: var(--color-acento-oscuro);
+}
+
+.boton--secundario {
+  border-color: var(--color-primario);
+  color: var(--color-primario);
+}
+
+
+/* ===== 5. SECCIÓN INICIO (Flexbox) ===== */
+.inicio {
+  min-height: 80vh;   /* unidad vh: 80% del alto de la pantalla */
+  display: flex;
+  align-items: center;
+  padding: var(--espacio-lg) 0;
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+}
+
+.inicio__contenido {
+  display: flex;                 /* FLEXBOX */
+  flex-direction: column;        /* en celular: texto arriba, imagen abajo */
+  align-items: center;
+  gap: var(--espacio-lg);
+  text-align: center;
+}
+
+.inicio__texto h1 {
+  font-size: 2rem;
+  margin-bottom: var(--espacio-sm);
+}
+
+.inicio__texto p {
+  color: var(--color-texto-suave);
+  font-size: 1.1rem;
+  margin-bottom: var(--espacio-md);
+}
+
+.inicio__botones {
+  display: flex;                 /* FLEXBOX: botones uno al lado del otro */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--espacio-sm);
+}
+
+.inicio__imagen {
+  width: 80vw;          /* unidad vw: 80% del ancho de la pantalla */
+  max-width: 420px;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-fuerte);
+}
+
+
+/* ===== 6. SECCIONES GENERALES ===== */
+.seccion {
+  padding: var(--espacio-lg) 0;
+}
+
+.seccion--clara {
+  background-color: var(--color-fondo-claro);
+}
+
+.seccion__titulo {
+  font-size: 1.75rem;
+  text-align: center;
+  margin-bottom: var(--espacio-md);
+}
+
+
+/* ===== 7. CÓMO FUNCIONA (Grid) ===== */
+.pasos {
+  list-style: none;
+  display: grid;                 /* GRID */
+  grid-template-columns: 1fr;    /* celular: una sola columna */
+  gap: var(--espacio-md);
+}
+
+.paso {
+  background-color: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: var(--espacio-md);
+  box-shadow: var(--sombra);
+  text-align: center;
+}
+
+.paso__numero {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--espacio-xs);
+  border-radius: 50%;
+  background-color: var(--color-acento);
+  color: #ffffff;
+  font-family: var(--fuente-titulos);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.paso h3 {
+  margin-bottom: var(--espacio-xs);
+}
+
+.paso p {
+  color: var(--color-texto-suave);
+}
+
+
+/* ===== 8. FORMULARIO (Grid) ===== */
+.formulario {
+  display: grid;                 /* GRID */
+  grid-template-columns: 1fr;    /* celular: un campo debajo del otro */
+  gap: var(--espacio-sm);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--espacio-md);
+  background-color: var(--color-fondo);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.campo label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: var(--color-fondo);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--color-acento);
+  border-color: transparent;
+}
+
+textarea {
+  resize: vertical;
+}
+
+
+/* ===== 9. REPORTES: filtros (Flexbox) y tarjetas (Grid) ===== */
+.filtros {
+  display: flex;                 /* FLEXBOX */
+  flex-wrap: wrap;
+  gap: var(--espacio-sm);
+  margin-bottom: var(--espacio-md);
+}
+
+.filtros .campo {
+  flex: 1 1 200px;  /* crece, se achica y su ancho ideal es 200px */
+}
+
+.reportes {
+  display: grid;                 /* GRID */
+  grid-template-columns: 1fr;
+  gap: var(--espacio-md);
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-xs);
+  padding: var(--espacio-md);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  background-color: var(--color-fondo);
+  box-shadow: var(--sombra);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-fuerte);
+}
+
+.tarjeta__cabecera {
+  display: flex;
+  justify-content: space-between;  /* etiqueta a la izquierda, estado a la derecha */
+  align-items: center;
+  gap: var(--espacio-xs);
+}
+
+.tarjeta p {
+  color: var(--color-texto-suave);
+  flex-grow: 1;  /* empuja el pie hacia abajo para que todas las tarjetas se alineen */
+}
+
+.tarjeta__pie {
+  display: flex;
+  justify-content: space-between;
+  padding-top: var(--espacio-xs);
+  border-top: 1px solid var(--color-borde);
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+}
+
+.etiqueta,
+.estado {
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.etiqueta {
+  background-color: var(--color-fondo-claro);
+  color: var(--color-primario);
+}
+
+.estado {
+  color: #ffffff;
+}
+
+.estado--pendiente { background-color: var(--color-pendiente); }
+.estado--proceso   { background-color: var(--color-proceso); }
+.estado--resuelto  { background-color: var(--color-resuelto); }
+
+
+/* ===== 10. ESTADÍSTICAS (Grid) ===== */
+.estadisticas {
+  display: grid;                          /* GRID */
+  grid-template-columns: repeat(2, 1fr);  /* celular: 2 columnas iguales */
+  gap: var(--espacio-sm);
+  margin-bottom: var(--espacio-md);
+}
+
+.dato {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--espacio-md) var(--espacio-sm);
+  background-color: var(--color-fondo);
+  border-radius: var(--radio);
+  border-top: 4px solid var(--color-primario);
+  box-shadow: var(--sombra);
+}
+
+.dato--pendiente { border-top-color: var(--color-pendiente); }
+.dato--proceso   { border-top-color: var(--color-proceso); }
+.dato--resuelto  { border-top-color: var(--color-resuelto); }
+
+.dato__numero {
+  font-family: var(--fuente-titulos);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-primario);
+}
+
+.dato__texto {
+  font-size: 0.9rem;
+  color: var(--color-texto-suave);
+}
+
+.tabla-contenedor {
+  overflow-x: auto;  /* si la tabla no entra en celular, se desplaza de costado */
+}
+
+.tabla {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: var(--color-fondo);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}
+
+.tabla caption {
+  font-weight: 600;
+  margin-bottom: var(--espacio-xs);
+}
+
+.tabla th,
+.tabla td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.tabla thead th {
+  background-color: var(--color-primario);
+  color: #ffffff;
+}
+
+.tabla tfoot th,
+.tabla tfoot td {
+  font-weight: 700;
+  border-bottom: none;
+}
+
+
+/* ===== 11. PIE DE PÁGINA (Flexbox) ===== */
+.pie {
+  background-color: var(--color-primario);
+  color: #ffffff;
+  padding: var(--espacio-md) 0;
+  font-size: 0.9rem;
+}
+
+.pie__contenido {
+  display: flex;                 /* FLEXBOX */
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  text-align: center;
+}
+
+
+/* =========================================================
+   12. RESPONSIVE DESIGN (Media Queries)
+   ========================================================= */
+
+/* ----- TABLET: desde 768px de ancho ----- */
+@media (min-width: 768px) {
+  .encabezado__contenido {
+    flex-direction: row;              /* logo a la izquierda, menú a la derecha */
+    justify-content: space-between;
+  }
+
+  .inicio__texto h1 {
+    font-size: 2.6rem;
+  }
+
+  .pasos {
+    grid-template-columns: repeat(3, 1fr);  /* 3 pasos en fila */
+  }
+
+  .formulario {
+    grid-template-columns: 1fr 1fr;         /* 2 campos por fila */
+  }
+
+  /* los campos con esta clase ocupan las 2 columnas */
+  .campo--completo {
+    grid-column: 1 / -1;
+  }
+
+  .reportes {
+    grid-template-columns: repeat(2, 1fr);  /* 2 tarjetas por fila */
+  }
+
+  .estadisticas {
+    grid-template-columns: repeat(4, 1fr);  /* 4 datos en fila */
+  }
+
+  .pie__contenido {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* ----- COMPUTADORA: desde 1024px de ancho ----- */
+@media (min-width: 1024px) {
+  .inicio__contenido {
+    flex-direction: row;              /* texto a la izquierda, imagen a la derecha */
+    text-align: left;
+  }
+
+  .inicio__texto {
+    flex: 1;                          /* ocupa todo el espacio libre */
+  }
+
+  .inicio__botones {
+    justify-content: flex-start;
+  }
+
+  .inicio__texto h1 {
+    font-size: 3rem;
+  }
+
+  .inicio__imagen {
+    width: 40vw;
+  }
+
+  .reportes {
+    grid-template-columns: repeat(3, 1fr);  /* 3 tarjetas por fila */
+  }
+}
