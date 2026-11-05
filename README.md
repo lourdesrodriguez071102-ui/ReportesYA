@@ -1,4 +1,4 @@
-# ReportaYa 🚧
+# ReportaYa 
 
 ## Integrantes
 
@@ -24,7 +24,7 @@ Proyecto de la materia **Programación IV**.
 
 ## Sitio publicado
 
-🔗 **https://TU-PROYECTO.vercel.app/**
+🔗 **https://reporta-ya.vercel.app/**
 
 ## TP3: Refactorización con Bootstrap
 
