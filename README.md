@@ -20,11 +20,49 @@ Proyecto de la materia **Programación IV**.
 - Google Fonts (Poppins e Inter)
 - Git y GitHub
 - Vercel (deploy)
-- Próximamente: JavaScript, React y JSON
+- JavaScript (manipulación del DOM y eventos)
+- localStorage
+- Próximamente: React y JSON
 
 ## Sitio publicado
 
 🔗 **https://reporta-ya.vercel.app/**
+
+## TP4: JavaScript y DOM
+
+Toda la lógica está en `script.js`, que se carga al final del `body` (cuando el HTML ya existe). El archivo está dividido en 12 bloques numerados.
+
+### Funcionalidades
+
+| # | Funcionalidad | Eventos | Manipulación del DOM |
+|---|---------------|---------|----------------------|
+| 1 | **Listado dinámico de reportes:** las tarjetas se generan desde un array de objetos | — | `createElement`, `append`, `textContent`, `classList` |
+| 2 | **Búsqueda** por título o dirección (sin distinguir mayúsculas ni tildes) | `input` | Vuelve a dibujar las tarjetas |
+| 3 | **Filtros combinados** por categoría, barrio y estado, con contador de resultados y mensaje cuando no hay coincidencias | `change`, `click` | `innerHTML = ""`, `classList.toggle("d-none")` |
+| 4 | **Crear un reporte** desde el formulario: se agrega al listado y aparece destacado | `submit` + `preventDefault()` | Inserta una tarjeta nueva |
+| 5 | **Validación del formulario** con estilos de Bootstrap y mensajes de error | `submit` | `checkValidity()`, clase `was-validated`, alerta creada con JS |
+| 6 | **Estadísticas automáticas:** tarjetas de resumen y tabla por categoría calculadas a partir de los datos | — | `textContent`, filas `tr` creadas con JS |
+| 7 | **Contador de caracteres** de la descripción (se pone en rojo cerca del límite) | `input` | `textContent`, `classList.toggle` |
+| 8 | **Vista previa de la foto** elegida | `change` | `src` de la imagen con `URL.createObjectURL` |
+| 9 | **Guardado en el navegador:** los reportes no se pierden al recargar | — | `localStorage` + `JSON.stringify` / `JSON.parse` |
+| 10 | **Navbar:** marca la sección que se está viendo y en celular se cierra al tocar una opción | `scroll`, `click` | Clase `active` |
+| 11 | **Botón "volver arriba"** que aparece al bajar en la página | `scroll`, `click` | Clase `visible`, `window.scrollTo` |
+| 12 | **Restablecer ejemplos:** vuelve a los reportes iniciales (útil para pruebas) | `click` | `confirm()` |
+
+### Buenas prácticas aplicadas
+
+- Se usa `textContent` en vez de `innerHTML` para mostrar lo que escribe el usuario, así no se puede inyectar código HTML.
+- Los elementos del DOM se buscan una sola vez y se guardan en constantes.
+- Un único evento `scroll` para las dos funciones que dependen del desplazamiento.
+- Las lecturas y escrituras de `localStorage` están dentro de `try/catch` para que el sitio funcione aunque el navegador lo bloquee.
+
+### SEO en el TP4
+
+Se mantienen todas las estrategias anteriores y se agregan:
+
+- **Datos estructurados (JSON-LD)** con schema.org: le indican a Google que el sitio es un `WebSite`, su nombre, URL e idioma.
+- **`<noscript>`**: muestra un aviso si el navegador tiene JavaScript desactivado.
+- **`aria-live`** en las alertas y en el contador de resultados, para que los lectores de pantalla anuncien los cambios (accesibilidad, que también suma al SEO).
 
 ## TP3: Refactorización con Bootstrap
 
@@ -69,6 +107,7 @@ reportes-urbanos/
 │   ├── hero.svg
 │   └── logo.svg
 ├── index.html
+├── script.js
 ├── style.css
 ├── robots.txt
 ├── sitemap.xml
