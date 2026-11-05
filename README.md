@@ -153,5 +153,5 @@ Cada rama se crea desde `dev` y se integra mediante un Pull Request hacia `dev`.
 
 ## Cómo ver el proyecto
 
-- Online: https://TU-PROYECTO.vercel.app/
+- Online:  https://reporta-ya.vercel.app/
 - Local: clonar el repositorio y abrir `index.html` en el navegador.
