@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Ubicación del mapa del sitio (reemplazar por la URL real)
-Sitemap: https://TU-USUARIO.github.io/reportes-urbanos/sitemap.xml
+Sitemap: https://TU-PROYECTO.vercel.app/sitemap.xml

@@ -16,9 +16,48 @@ Proyecto de la materia **Programación IV**.
 
 - HTML5 semántico
 - CSS3 (Flexbox, Grid, variables, media queries)
+- Bootstrap 5.3 y Bootstrap Icons (desde CDN)
 - Google Fonts (Poppins e Inter)
 - Git y GitHub
-- Próximamente: Bootstrap, JavaScript, React y JSON
+- Vercel (deploy)
+- Próximamente: JavaScript, React y JSON
+
+## Sitio publicado
+
+🔗 **https://TU-PROYECTO.vercel.app/**
+
+## TP3: Refactorización con Bootstrap
+
+Se refactorizó la interfaz del TP2 usando Bootstrap, **sin agregar nuevas funcionalidades**.
+
+### Componentes y clases de Bootstrap utilizados
+
+| Sección | Componentes / clases |
+|---------|----------------------|
+| Encabezado | `navbar`, `navbar-expand-lg`, `navbar-toggler` (menú hamburguesa), `collapse`, `sticky-top` |
+| Inicio | Sistema de grilla (`container`, `row`, `col-lg-6`), `display-5`, `lead`, `badge`, `btn-lg`, `img-fluid` |
+| Cómo funciona | `card`, `row-cols-1 row-cols-md-3`, `shadow-sm`, `h-100` |
+| Nuevo reporte | `form-control`, `form-select`, `form-label`, `input-group`, `row g-3` con `col-md-6` |
+| Reportes | `card`, `card-footer`, `badge` de estado (`text-bg-danger`, `text-bg-warning`, `text-bg-success`), `row-cols-lg-3` |
+| Estadísticas | `card` con `border-top border-4`, `display-6`, `table`, `table-striped`, `table-hover`, `table-responsive` |
+| Pie de página | Utilidades flex: `d-flex`, `flex-column flex-md-row`, `justify-content-between` |
+
+Además se usaron utilidades de espaciado (`py-5`, `mb-4`, `gap-3`), texto (`text-center`, `fw-bold`, `text-secondary`) y Bootstrap Icons.
+
+### Responsive con Bootstrap
+
+Bootstrap usa **breakpoints**: `md` (desde 768px, tablet) y `lg` (desde 992px, computadora). Por ejemplo, `row-cols-1 row-cols-md-2 row-cols-lg-3` muestra 1 tarjeta por fila en celular, 2 en tablet y 3 en computadora. En celular, el menú se colapsa en un botón hamburguesa.
+
+### Personalización de Bootstrap (`style.css`)
+
+- `style.css` se carga **después** de Bootstrap para poder sobrescribir sus estilos.
+- Se crearon clases con los colores de la marca: `bg-marca`, `text-marca`, `border-marca`, `btn-acento` y `btn-outline-marca`.
+- Los botones se personalizaron cambiando las variables propias de Bootstrap (`--bs-btn-bg`, `--bs-btn-hover-bg`, etc.).
+- La tipografía se cambió con la variable `--bs-body-font-family`.
+
+### CSS del TP2
+
+El CSS puro del TP2 **quedó comentado al final de `style.css`**, como pide la consigna. Sus comentarios internos se cambiaron a `//` para que no cierren el bloque de comentario antes de tiempo.
 
 ## Estructura del proyecto
 
@@ -35,6 +74,8 @@ reportes-urbanos/
 ├── sitemap.xml
 └── README.md
 ```
+
+> Las secciones siguientes documentan el CSS puro del TP2 (hoy comentado).
 
 ## ¿Dónde utilizamos Flexbox?
 
@@ -112,4 +153,5 @@ Cada rama se crea desde `dev` y se integra mediante un Pull Request hacia `dev`.
 
 ## Cómo ver el proyecto
 
-Clonar el repositorio y abrir `index.html` en el navegador.
+- Online: https://TU-PROYECTO.vercel.app/
+- Local: clonar el repositorio y abrir `index.html` en el navegador.
